@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
+	<meta name="description" content="Avalanche blockchain tokens list - AVAX" />
+	<meta name="author" content="all3kcis" />
 	<title>Avax Tokens list</title>
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 	<!-- Font Awesome icons (free version)-->
-	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+	<script src="js/fa-5.15.3-all.js"></script>
 	<!-- Google fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
@@ -103,12 +103,13 @@
         </div>
         
         <!-- Bootstrap core JS-->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
 
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-    	<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <!-- Web3 JS-->
+    	<script src="js/web3-1.3.6.min.js"></script>
 
         <script>
 
@@ -131,11 +132,11 @@
 		function addList(name, version, timestamp, img, url){
 
 
-			th = $('<th>').attr('scope','row').html('<img width="35px" src="'+img+'" alt="'+name+'">')
-			td1 = $('<td>').addClass('bold').html(name)
-			td2 = $('<td>').html(version)
-			td3 = $('<td>').html(timestamp)
-			td4 = $('<td>').html('<a href="'+url+'" target="_blank">Github</a>')
+			th = $('<th>').attr('scope','row').html('<img width="35px" src="'+escapeHTML(img)+'" alt="'+escapeHTML(name)+'">')
+			td1 = $('<td>').addClass('bold').text(name)
+			td2 = $('<td>').text(version)
+			td3 = $('<td>').text(timestamp)
+			td4 = $('<td>').html('<a href="'+escapeHTML(url)+'" target="_blank">Github</a>')
 			tr = $('<tr>').append(th)
 			tr.append(td1)
 			tr.append(td2)
@@ -146,11 +147,11 @@
 
 		function addToken(name, symbol, img, address){
 
-			th = $('<th>').attr('scope','row').html('<img width="35px" src="'+img+'" alt="'+symbol+'">')
-			td1 = $('<td>').addClass('bold').html(name)
-			td2 = $('<td>').addClass('bold').html(symbol)
-			td3 = $('<td>').html('<a href="https://cchain.explorer.avax.network/tokens/'+address+'/token-holders" class="explorer_url">'+address.slice(0, 5)+'...'+address.slice(-4)+'</a>')
-			td4 = $('<td>').html('<button type="submit" class="btn btn-secondary-alt" onClick="addTokenToMetaMask(\''+address+'\')">Add to <img src="assets/MetaMask_Fox.svg" alt="Metamask" width="20px"></button>')
+			th = $('<th>').attr('scope','row').html('<img width="35px" src="'+escapeHTML(img)+'" alt="'+escapeHTML(symbol)+'">')
+			td1 = $('<td>').addClass('bold').text(name)
+			td2 = $('<td>').addClass('bold').text(symbol)
+			td3 = $('<td>').html('<a href="https://cchain.explorer.avax.network/tokens/'+escapeHTML(address)+'/token-holders" class="explorer_url">'+escapeHTML(address).slice(0, 5)+'...'+escapeHTML(address).slice(-4)+'</a>')
+			td4 = $('<td>').html('<button type="submit" class="btn btn-secondary-alt" onClick="addTokenToMetaMask(\''+escapeHTML(address)+'\')">Add to <img src="assets/MetaMask_Fox.svg" alt="Metamask" width="20px"></button>')
 			tr = $('<tr>').append(th)
 			tr.append(td1)
 			tr.append(td2)
@@ -172,6 +173,13 @@
 			for (const [address, token ] of Object.entries(tmp_tokens)) {
 				addToken(token.name, token.symbol, token.img, token.address)
 			}
+		}
+
+		function escapeHTML(unsafe) {
+		  return unsafe.replace(
+		    /[\u0000-\u002F\u003A-\u0040\u005B-\u0060\u007B-\u00FF]/g,
+		    c => '&#' + ('000' + c.charCodeAt(0)).substr(-4, 4) + ';'
+		  )
 		}
 
 		async function connectMetamask(){
@@ -218,6 +226,7 @@
 		}
 
 		$("#q").keyup(function() {
+			// Search function
 			refreshTokensList($(this).val())
 		});
 
@@ -262,13 +271,12 @@
 
 
 			i=0
+			// Loading top 15 tokens
 			for (const [address, token ] of Object.entries(tokens)) {
 				if(i>=15) return false;
 				addToken(token.name, token.symbol, token.img, token.address)
 				i++
 			}
-
-
 			
 			
 		});
