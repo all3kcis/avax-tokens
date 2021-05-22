@@ -1,0 +1,196 @@
+{
+    "name": "Custom Top Tokens",
+    "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png",
+    "keywords": [
+        "avalanche",
+        "defi",
+        "ethereum",
+        "bridge"
+    ],
+    "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+    },
+    "tokens": [
+        {
+            "chainId": 43114,
+            "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+            "decimals": 18,
+            "name": "Wrapped AVAX",
+            "symbol": "WAVAX",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15",
+            "decimals": 18,
+            "name": "Ether",
+            "symbol": "ETH",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x60781C2586D68229fde47564546784ab3fACA982",
+            "decimals": 18,
+            "name": "Pangolin",
+            "symbol": "PNG",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x60781C2586D68229fde47564546784ab3fACA982/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xB3fe5374F67D7a22886A0eE082b2E2f9d2651651",
+            "decimals": 18,
+            "name": "ChainLink Token",
+            "symbol": "LINK",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB3fe5374F67D7a22886A0eE082b2E2f9d2651651/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x408D4cD0ADb7ceBd1F1A1C33A0Ba2098E1295bAB",
+            "decimals": 8,
+            "name": "Wrapped BTC",
+            "symbol": "WBTC",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x408D4cD0ADb7ceBd1F1A1C33A0Ba2098E1295bAB/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x39cf1BD5f15fb22eC3D9Ff86b0727aFc203427cc",
+            "decimals": 18,
+            "name": "SushiToken",
+            "symbol": "SUSHI",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x39cf1BD5f15fb22eC3D9Ff86b0727aFc203427cc/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xe896CDeaAC9615145c0cA09C8Cd5C25bced6384c",
+            "decimals": 18,
+            "name": "Penguin Finance",
+            "symbol": "PEFI",
+            "logoURI": "https://raw.githubusercontent.com/Penguin-Finance/png-files/main/PEFILOGOPNG.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xbA7dEebBFC5fA1100Fb055a87773e1E99Cd3507a",
+            "decimals": 18,
+            "name": "Dai Stablecoin",
+            "symbol": "DAI",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xbA7dEebBFC5fA1100Fb055a87773e1E99Cd3507a/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xde3A24028580884448a5397872046a019649b084",
+            "decimals": 6,
+            "name": "Tether USD",
+            "symbol": "USDT",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xde3A24028580884448a5397872046a019649b084/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x8cE2Dee54bB9921a2AE0A63dBb2DF8eD88B91dD9",
+            "decimals": 18,
+            "name": "Aave Token",
+            "symbol": "AAVE",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x8cE2Dee54bB9921a2AE0A63dBb2DF8eD88B91dD9/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xC38f41A296A4493Ff429F1238e030924A1542e50",
+            "decimals": 18,
+            "name": "Snowball",
+            "symbol": "SNOB",
+            "logoURI": "https://raw.githubusercontent.com/Snowball-Finance/Assets/main/Uphill%20snowball.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xd1c3f94DE7e5B45fa4eDBBA472491a9f4B166FC4",
+            "decimals": 18,
+            "name": "Avalaunch",
+            "symbol": "XAVA",
+            "logoURI": "https://raw.githubusercontent.com/avalaunch-app/xava-protocol/master/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xf39f9671906d8630812f9d9863bBEf5D523c84Ab",
+            "decimals": 18,
+            "name": "Uniswap",
+            "symbol": "UNI",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf39f9671906d8630812f9d9863bBEf5D523c84Ab/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xa1144a6a1304bd9cbb16c800f7a867508726566e",
+            "decimals": 18,
+            "name": "Baguette",
+            "symbol": "BAG",
+            "logoURI": "https://raw.githubusercontent.com/baguette-exchange/contracts/master/tokenlist/logos/baguette.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985",
+            "decimals": 9,
+            "name": "Spore.Finance",
+            "symbol": "SPORE",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x617724974218a18769020a70162165a539c07e8a",
+            "decimals": 18,
+            "name": "OliveCash Token",
+            "symbol": "OLIVE",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x617724974218A18769020A70162165A539c07E8a/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x99519acb025a0e0d44c3875a4bbf03af65933627",
+            "decimals": 18,
+            "name": "Yearn.finance",
+            "symbol": "YFI",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x99519AcB025a0e0d44c3875A4BbF03af65933627/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x846d50248baf8b7ceaa9d9b53bfd12d7d7fbb25a",
+            "decimals": 18,
+            "name": "VersoToken",
+            "symbol": "VSO",
+            "logoURI": "https://raw.githubusercontent.com/VersoOfficial/pr/master/icon_blue.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xd606199557c8ab6f4cc70bd03facc96ca576f142",
+            "decimals": 18,
+            "name": "Gondola",
+            "symbol": "GDL",
+            "logoURI": "https://raw.githubusercontent.com/gondola-finance/frontend/master/src/assets/icons/brand_logo_darkmode.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x4480B4DdFb15fE6518817ef024D8B493afF2Db54",
+            "decimals": 18,
+            "name": "BirdyFinance",
+            "symbol": "BIRD",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x4480B4DdFb15fE6518817ef024D8B493afF2Db54/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xC931f61B1534EB21D8c11B24f3f5Ab2471d4aB50",
+            "decimals": 8,
+            "name": "Blocknet",
+            "symbol": "AABLOCK",
+            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xC931f61B1534EB21D8c11B24f3f5Ab2471d4aB50/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0x65378b697853568dA9ff8EaB60C13E1Ee9f4a654",
+            "decimals": 18,
+            "name": "Husky Avalanche",
+            "symbol": "HUSKY",
+            "logoURI": "https://raw.githubusercontent.com/safepoint-be/project-husky/main/img/logo.png"
+        },
+        
+        
+    ],
+    "timestamp": "2021-05-22T14:57:00+00:00"
+}
