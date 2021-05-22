@@ -47,8 +47,8 @@
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Symbol</th>
-							<th scope="col">Name</th>
+							<th scope="col" class="tokens_name">Name</th>
+							<th scope="col" class="tokens_symbol">Symbol</th>
 							<th scope="col">Address</th>
 							<th scope="col"></th>
 						</tr>
@@ -71,7 +71,7 @@
 								<th scope="col">#</th>
 								<th scope="col">Name</th>
 								<th scope="col">Version</th>
-								<th scope="col">Update</th>
+								<th scope="col" class="hide_on_small">Update</th>
 								<th scope="col">Url</th>
 							</tr>
 						</thead>
@@ -135,7 +135,7 @@
 			th = $('<th>').attr('scope','row').html('<img width="35px" src="'+escapeHTML(img)+'" alt="'+escapeHTML(name)+'">')
 			td1 = $('<td>').addClass('bold').text(name)
 			td2 = $('<td>').text(version)
-			td3 = $('<td>').text(timestamp)
+			td3 = $('<td>').addClass('hide_on_small').text(timestamp)
 			td4 = $('<td>').html('<a href="'+escapeHTML(url)+'" target="_blank">Github</a>')
 			tr = $('<tr>').append(th)
 			tr.append(td1)
@@ -148,10 +148,10 @@
 		function addToken(name, symbol, img, address){
 
 			th = $('<th>').attr('scope','row').html('<img width="35px" src="'+escapeHTML(img)+'" alt="'+escapeHTML(symbol)+'">')
-			td1 = $('<td>').addClass('bold').text(name)
-			td2 = $('<td>').addClass('bold').text(symbol)
+			td1 = $('<td>').addClass('tokens_name').text(name)
+			td2 = $('<td>').addClass('tokens_symbol').text(symbol)
 			td3 = $('<td>').html('<a href="https://cchain.explorer.avax.network/tokens/'+escapeHTML(address)+'/token-holders" class="explorer_url">'+escapeHTML(address).slice(0, 5)+'...'+escapeHTML(address).slice(-4)+'</a>')
-			td4 = $('<td>').html('<button type="submit" class="btn btn-secondary-alt" onClick="addTokenToMetaMask(\''+escapeHTML(address)+'\')">Add to <img src="assets/MetaMask_Fox.svg" alt="Metamask" width="20px"></button>')
+			td4 = $('<td>').html('<button type="submit" class="btn btn-secondary-alt" onClick="addTokenToMetaMask(\''+escapeHTML(address)+'\')"><span class="hide_on_small">Add to </span><img src="assets/MetaMask_Fox.svg" alt="Metamask" width="20px"></button>')
 			tr = $('<tr>').append(th)
 			tr.append(td1)
 			tr.append(td2)
