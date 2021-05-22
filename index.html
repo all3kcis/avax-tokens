@@ -7,10 +7,9 @@
 	<meta name="author" content="all3kcis" />
 	<title>Avax Tokens list</title>
 	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-	<!-- Font Awesome icons (free version)-->
-	<script src="js/fa-5.15.3-all.js"></script>
+	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />	
 	<!-- Google fonts-->
+	<link href="css/all.min.css" rel="stylesheet" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
 	<!-- Core theme CSS (includes Bootstrap)-->
@@ -29,7 +28,7 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#tokens">Tokens</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#lists">Lists</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="" onclick="connectMetamask()"><img src="assets/MetaMask_Fox.svg" alt="Metamask" width="35px"></a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" id="connectMetamask" href="javascript:;"><img src="assets/MetaMask_Fox.svg" alt="Metamask" width="35px"></a></li>
                     </ul>
                 </div>
             </div>
@@ -50,7 +49,7 @@
 							<th scope="col" class="tokens_name">Name</th>
 							<th scope="col" class="tokens_symbol">Symbol</th>
 							<th scope="col">Address</th>
-							<th scope="col"></th>
+							<th scope="col" style="min-width: 115px;"></th>
 						</tr>
 					</thead>
 					<tbody></tbody>
@@ -150,8 +149,8 @@
 			th = $('<th>').attr('scope','row').html('<img width="35px" src="'+escapeHTML(img)+'" alt="'+escapeHTML(symbol)+'">')
 			td1 = $('<td>').addClass('tokens_name').text(name)
 			td2 = $('<td>').addClass('tokens_symbol').text(symbol)
-			td3 = $('<td>').html('<a href="https://cchain.explorer.avax.network/tokens/'+escapeHTML(address)+'/token-holders" class="explorer_url">'+escapeHTML(address).slice(0, 5)+'...'+escapeHTML(address).slice(-4)+'</a>')
-			td4 = $('<td>').html('<button type="submit" class="btn btn-secondary-alt" onClick="addTokenToMetaMask(\''+escapeHTML(address)+'\')"><span class="hide_on_small">Add to </span><img src="assets/MetaMask_Fox.svg" alt="Metamask" width="20px"></button>')
+			td3 = $('<td>').html('<a href="https://cchain.explorer.avax.network/tokens/'+escapeHTML(address)+'/token-holders" class="explorer_url" data-toggle="tooltip" data-placement="bottom" title="Go to Avax explorer">'+escapeHTML(address).slice(0, 5)+'...'+escapeHTML(address).slice(-4)+'</a>')
+			td4 = $('<td>').html('<button type="submit" class="btn btn-secondary-alt copyAddr" data-addr="'+escapeHTML(address)+'" data-toggle="tooltip" data-placement="bottom" title="Copy"><i class="far fa-copy"></i></button><button type="submit" class="btn btn-secondary-alt shareToken" data-addr="'+escapeHTML(address)+'" data-toggle="tooltip" data-placement="bottom" title="Share"><i class="fas fa-share-alt"></i></button> <button type="submit" class="btn btn-secondary-alt" onClick="addTokenToMetaMask(\''+escapeHTML(address)+'\')" data-toggle="tooltip" data-placement="bottom" title="Add to Metamask"><img src="assets/MetaMask_Fox.svg" alt="Metamask" width="20px"></button>')
 			tr = $('<tr>').append(th)
 			tr.append(td1)
 			tr.append(td2)
@@ -232,9 +231,9 @@
 			refreshTokensList($(this).val())
 		});
 
-
-		$( document ).ready(async function() {
-		
+		const queryString = window.location.search;
+		$( document ).ready(function() {
+			
 			$.each(lists, function( index, url ) {
 				$.ajax({
 					url : url,
@@ -255,6 +254,7 @@
 											name:token.name,
 											symbol:token.symbol,
 											img:token.logoURI,
+											list:list.name,
 										}
 									}else{
 										// Fuji (43113) or others
@@ -270,18 +270,84 @@
 					}
 				});
 			});
+			console.log(Object.keys(tokens).length, 'tokens loaded')
 
+			load=(function(){
+				i=0
+				// Loading top 15 tokens
+				for (const [address, token ] of Object.entries(tokens)) {
+					if(i>=15) return false;
+					addToken(token.name, token.symbol, token.img, token.address)
+					i++
+				}
+			})()
 
-			i=0
-			// Loading top 15 tokens
-			for (const [address, token ] of Object.entries(tokens)) {
-				if(i>=15) return false;
-				addToken(token.name, token.symbol, token.img, token.address)
-				i++
+			//console.log(queryString);
+			const urlParams = new URLSearchParams(queryString);
+			if(urlParams.get('a') != null){
+				token = tokenByAddress(urlParams.get('a'))
+				if(typeof token == 'object'){
+					$('#q').val(token.symbol)
+					$('#tokens tbody').empty('')
+					addToken(token.name, token.symbol, token.img, token.address)
+				}
 			}
 			
-			
 		});
+		
+		function tokenByAddress(addr){
+			if(typeof addr == 'string'){
+				for (const [address, token ] of Object.entries(tokens)) {
+					if(addr.toLowerCase() == address.toLowerCase()){
+						return token
+					}
+				}
+			}
+			return null
+		}
+
+		function copyToClipboard(text) {
+			var dummy = document.createElement("textarea");
+			document.body.appendChild(dummy);
+			dummy.value = text;
+			dummy.select();
+			document.execCommand("copy");
+			document.body.removeChild(dummy);
+		}
+
+		function addToast(text){
+			var html ='<div class="toast" id="myToast" data-delay="3000"><div class="toast-header"><strong class="mr-auto">'+text+'</div></div>';
+			//<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+			$('#toasts').html(html)
+		}
+
+		$("body").tooltip({
+			selector: '[data-toggle="tooltip"]'
+		});
+
+		
+		$('#connectMetamask').click(function() {
+
+			connectMetamask();
+		});
+
+		$('body').on( "click", ".copyAddr", function() {
+			copyToClipboard($(this).data('addr'));
+			// Todo Notif / Animate on btn
+			addToast('Address copied <i class="fas fa-check"></i>')
+			$("#myToast").toast('show');
+		});
+
+		$('body').on( "click", ".shareToken", function() {
+			var getUrl = window.location;
+			var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			copyToClipboard(baseUrl+'?a='+$(this).data('addr'));
+			// Todo Notif / Animate on btn
+			addToast('Share link copied <i class="fas fa-check"></i>')
+			$("#myToast").toast('show');
+		});
+
+		
 
 	</script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -293,6 +359,8 @@
 
 	  gtag('config', 'G-6K80ZB2LGM');
 	</script>
+
+	<div id="toasts"></div>
 </body>
 </body>
 </html>

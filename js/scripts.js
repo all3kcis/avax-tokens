@@ -17,15 +17,6 @@
             target = target.length ?
                 target :
                 $("[name=" + this.hash.slice(1) + "]");
-            if (target.length) {
-                anime({
-                    targets: 'html, body',
-                    scrollTop: target.offset().top - 72,
-                    duration: 1000,
-                    easing: 'easeInOutExpo'
-                });
-                return false;
-            }
         }
     });
 
