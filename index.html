@@ -20,14 +20,14 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Avax Tokens</a>
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/avalanche-red-white.png" alt="Avax"><br />Tokens</a>
                 <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#assets">Assets</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#tokens">Tokens</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#lists">Lists</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="" onclick="connectMetamask()"><img src="assets/MetaMask_Fox.svg" alt="Metamask" width="35px"></a></li>
                     </ul>
@@ -35,11 +35,13 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead text-white text-center  assets" id="assets">
+        <header class="masthead text-white text-center  tokens" id="tokens">
             <div class="container d-flex align-items-center flex-column">
-
+            	<div class="alert alert-warning" role="alert">
+				Be aware that several tokens may have the same name, so make sure that the one you add is the right one.
+				</div>
 				<p><form class="form-inline">
-					<input type="q" class="form-control" id="q" placeholder="XAVA">
+					<input type="q" class="form-control" id="q" placeholder="Search your token">
 				</form></p>
 	            <table class="table table-borderless" id="tokens">
 					<thead>
@@ -111,13 +113,17 @@
         <script>
 
     	var lists = [
+    		'https://raw.githubusercontent.com/all3kcis/avax-tokens/master/lists/custom.json',
     		'https://raw.githubusercontent.com/pangolindex/tokenlists/main/top15.tokenlist.json',
 			'https://raw.githubusercontent.com/pangolindex/tokenlists/main/defi.tokenlist.json',
 			'https://raw.githubusercontent.com/pangolindex/tokenlists/main/aeb.tokenlist.json',
 			'https://raw.githubusercontent.com/pangolindex/tokenlists/main/stablecoin.tokenlist.json',
 			'https://raw.githubusercontent.com/baguette-exchange/contracts/master/tokenlist/baguette.tokenlist.json',
 			'https://raw.githubusercontent.com/elkfinance/tokens/main/avax.tokenlist.json',
-			// Todo Custom list
+		]
+
+		var blackList = [
+			// Add here black listed tokens
 		]
 
 		var tokens = {}
@@ -143,8 +149,8 @@
 			th = $('<th>').attr('scope','row').html('<img width="35px" src="'+img+'" alt="'+symbol+'">')
 			td1 = $('<td>').addClass('bold').html(name)
 			td2 = $('<td>').addClass('bold').html(symbol)
-			td3 = $('<td>').html('<a href="https://cchain.explorer.avax.network/tokens/'+address+'/token-holders">'+address+'</a>')
-			td4 = $('<td>').html('<button type="submit" class="btn btn-secondary" onClick="addTokenToMetaMask(\''+address+'\')">Add</button>')
+			td3 = $('<td>').html('<a href="https://cchain.explorer.avax.network/tokens/'+address+'/token-holders" class="explorer_url">'+address.slice(0, 5)+'...'+address.slice(-4)+'</a>')
+			td4 = $('<td>').html('<button type="submit" class="btn btn-secondary-alt" onClick="addTokenToMetaMask(\''+address+'\')">Add to <img src="assets/MetaMask_Fox.svg" alt="Metamask" width="20px"></button>')
 			tr = $('<tr>').append(th)
 			tr.append(td1)
 			tr.append(td2)
@@ -227,17 +233,25 @@
 						var list = jQuery.parseJSON( data );
 						addList(list.name, list.version.major+'.'+list.version.minor+'.'+list.version.patch, list.timestamp, list.logoURI, url)
 						$.each(list.tokens, function( index, token ) {
-							if(typeof tokens[token.address.toLowerCase()] == 'undefined'){
-								tokens[token.address.toLowerCase()] = {
-									address:token.address.toLowerCase(),
-									chainId:token.chainId,
-									decimals:token.decimals,
-									name:token.name,
-									symbol:token.symbol,
-									img:token.logoURI,
+							if(!blackList.includes(token.address.toLowerCase())){
+								if(typeof tokens[token.address.toLowerCase()] == 'undefined'){
+									if(token.chainId == 43114){
+										//Mainnet
+										tokens[token.address.toLowerCase()] = {
+											address:token.address.toLowerCase(),
+											chainId:token.chainId,
+											decimals:token.decimals,
+											name:token.name,
+											symbol:token.symbol,
+											img:token.logoURI,
+										}
+									}else{
+										// Fuji (43113) or others
+										//console.log(token)
+									}
+									
 								}
-							}
-							
+							}							
 						})
 					},
 					error: function() {

@@ -2480,11 +2480,20 @@ fieldset:disabled a.btn {
   background-color: #e84242;
   border-color: #e84242;
 }
+.btn-secondary-alt {
+  color: #e84242;
+  border-color: #e84242;
+}
 .btn-secondary:hover {
   color: #fff;
   background-color: #eb7d7d;
   border-color: #e84242;
 }
+.btn-secondary-alt:hover {
+  color: #e84242;
+  border-color: #eb7d7d;
+}
+
 .btn-secondary:focus, .btn-secondary.focus {
   color: #fff;
   background-color: #eb7d7d;
@@ -10116,12 +10125,16 @@ h3 {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    transition: padding-top 0.3s, padding-bottom 0.3s;
+    padding-top: 1.2rem;
+    padding-bottom: 1.0rem;
+    transition: padding-top 0.3s, padding-bottom 0.3s, width 0.3s;
+  }
+  #mainNav .navbar-brand img{
+    width: 85px;
+    transition: width 0.3s;
   }
   #mainNav .navbar-brand {
-    font-size: 1.75em;
+    font-size: 1.25em;
     transition: font-size 0.3s;
   }
   #mainNav .navbar-nav {
@@ -10141,7 +10154,10 @@ h3 {
     padding-bottom: 0.5rem;
   }
   #mainNav.navbar-shrink .navbar-brand {
-    font-size: 1.5em;
+    font-size: 1.0em;
+  }
+  #mainNav.navbar-shrink .navbar-brand img{
+    width: 67px;
   }
 }
 .masthead {
