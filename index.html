@@ -42,7 +42,7 @@
 				<p><form class="form-inline">
 					<input type="q" class="form-control" id="q" placeholder="Search your token">
 				</form></p>
-	            <table class="table table-borderless" id="tokens">
+	            <table class="table table-borderless" id="tokens_table">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
@@ -64,7 +64,7 @@
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                     <div class="col-md-10">
-                    	<table class="table table-borderless" id="lists">
+                    	<table class="table table-borderless" id="lists_table">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
@@ -76,6 +76,20 @@
 						</thead>
 						<tbody></tbody>
 					</table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section discover" id="discover">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h2 style="font-size:1.5em;text-align: center;padding-bottom: 25px">Discover another community project</h2>
+                <!-- Portfolio Grid Items-->
+                <div class="row justify-content-center">
+                    <div class="col-md-6" style="text-align: center;">
+                    	
+                    	<a href="https://qsvtr.github.io/avax-fees/"><img src="assets/avax-fees.jpg" alt="Avax fees calculation" width="250px"><br />Get your total transaction fees paid</a>
                     </div>
                 </div>
             </div>
@@ -92,7 +106,7 @@
                         document.write(new Date().getFullYear());
                     </script>
 
-                    - <a href="https://github.com/all3kcis/avax-tokens">Contribute</a> - Credit : Thème <a href="https://github.com/startbootstrap/startbootstrap-freelancer" target="_blank">startbootstrap-freelancer</a>
+                    - <a href="https://github.com/all3kcis/avax-tokens" target="_blank">Contribute</a> - Credit : Thème <a href="https://github.com/startbootstrap/startbootstrap-freelancer" target="_blank">startbootstrap-freelancer</a>
                 </small>
             </div>
         </div>
@@ -196,6 +210,36 @@
 		    } else {
 		       console.log('No Metamask (or other Web3 Provider) installed')
 		    }
+
+		    try {  // Request account access
+				await window.ethereum.enable();
+				console.log(ethereum.selectedAddress)
+				const tokenInst = new web3.eth.Contract([{
+  "constant": true,
+  "inputs": [
+    {
+      "name": "_owner",
+      "type": "address"
+    }
+  ],
+  "name": "balanceOf",
+  "outputs": [
+    {
+      "name": "balance",
+      "type": "uint256"
+    }
+  ],
+  "payable": false,
+  "type": "function"
+}], "0x60781c2586d68229fde47564546784ab3faca982");
+				const balance = await tokenInst.methods.balanceOf(ethereum.selectedAddress).call()
+				console.log(balance)
+
+				/*window.web3.eth.getBalance("0x60781c2586d68229fde47564546784ab3faca982")
+				.then(console.log);*/
+			} catch(e) {  // User denied access
+				return false
+			}
 		}
 
 		async function addTokenToMetaMask(address){
@@ -225,6 +269,9 @@
 			  console.log(error);
 			}
 		}
+
+
+		
 
 		$("#q").keyup(function() {
 			// Search function
