@@ -188,7 +188,15 @@
             "name": "Husky Avalanche",
             "symbol": "HUSKY",
             "logoURI": "https://raw.githubusercontent.com/safepoint-be/project-husky/main/img/logo.png"
+        },
+        {
+            "chainId": 43114,
+            "address": "0xD769bDFc0CaEe933dc0a047C7dBad2Ec42CFb3E2",
+            "decimals": 18,
+            "name": "ChartEx",
+            "symbol": "Chart",
+            "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1d37986F252d0e349522EA6C3B98Cb935495E63E/logo.png"
         }
     ],
-    "timestamp": "2021-05-22T14:57:00+00:00"
+    "timestamp": "2021-05-23T23:54:00+00:00"
 }
