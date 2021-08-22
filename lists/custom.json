@@ -10,7 +10,7 @@
     "version": {
         "major": 1,
         "minor": 0,
-        "patch": 0
+        "patch": 1
     },
     "tokens": [
         {
@@ -23,10 +23,10 @@
         },
         {
             "chainId": 43114,
-            "address": "0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15",
+            "address": "0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab",
             "decimals": 18,
             "name": "Ether",
-            "symbol": "ETH",
+            "symbol": "WETH.e",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15/logo.png"
         },
         {
@@ -39,26 +39,26 @@
         },
         {
             "chainId": 43114,
-            "address": "0xB3fe5374F67D7a22886A0eE082b2E2f9d2651651",
+            "address": "0x5947bb275c521040051d82396192181b413227a3",
             "decimals": 18,
             "name": "ChainLink Token",
-            "symbol": "LINK",
+            "symbol": "LINK.e",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB3fe5374F67D7a22886A0eE082b2E2f9d2651651/logo.png"
         },
         {
             "chainId": 43114,
-            "address": "0x408D4cD0ADb7ceBd1F1A1C33A0Ba2098E1295bAB",
+            "address": "0x50b7545627a5162f82a992c33b87adc75187b218",
             "decimals": 8,
             "name": "Wrapped BTC",
-            "symbol": "WBTC",
+            "symbol": "WBTC.e",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x408D4cD0ADb7ceBd1F1A1C33A0Ba2098E1295bAB/logo.png"
         },
         {
             "chainId": 43114,
-            "address": "0x39cf1BD5f15fb22eC3D9Ff86b0727aFc203427cc",
+            "address": "0x37b608519f91f70f2eeb0e5ed9af4061722e4f76",
             "decimals": 18,
             "name": "SushiToken",
-            "symbol": "SUSHI",
+            "symbol": "SUSHI.e",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x39cf1BD5f15fb22eC3D9Ff86b0727aFc203427cc/logo.png"
         },
         {
@@ -71,26 +71,26 @@
         },
         {
             "chainId": 43114,
-            "address": "0xbA7dEebBFC5fA1100Fb055a87773e1E99Cd3507a",
+            "address": "0xd586e7f844cea2f87f50152665bcbc2c279d8d70",
             "decimals": 18,
             "name": "Dai Stablecoin",
-            "symbol": "DAI",
+            "symbol": "DAI.e",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xbA7dEebBFC5fA1100Fb055a87773e1E99Cd3507a/logo.png"
         },
         {
             "chainId": 43114,
-            "address": "0xde3A24028580884448a5397872046a019649b084",
+            "address": "0xc7198437980c041c805a1edcba50c1ce5db95118",
             "decimals": 6,
             "name": "Tether USD",
-            "symbol": "USDT",
+            "symbol": "USDT.e",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xde3A24028580884448a5397872046a019649b084/logo.png"
         },
         {
             "chainId": 43114,
-            "address": "0x8cE2Dee54bB9921a2AE0A63dBb2DF8eD88B91dD9",
+            "address": "0x63a72806098bd3d9520cc43356dd78afe5d386d9",
             "decimals": 18,
             "name": "Aave Token",
-            "symbol": "AAVE",
+            "symbol": "AAVE.e",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x8cE2Dee54bB9921a2AE0A63dBb2DF8eD88B91dD9/logo.png"
         },
         {
@@ -111,10 +111,10 @@
         },
         {
             "chainId": 43114,
-            "address": "0xf39f9671906d8630812f9d9863bBEf5D523c84Ab",
+            "address": "0x8ebaf22b6f053dffeaf46f4dd9efa95d89ba8580",
             "decimals": 18,
             "name": "Uniswap",
-            "symbol": "UNI",
+            "symbol": "UNI.e",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf39f9671906d8630812f9d9863bBEf5D523c84Ab/logo.png"
         },
         {
@@ -167,14 +167,6 @@
         },
         {
             "chainId": 43114,
-            "address": "0x4480B4DdFb15fE6518817ef024D8B493afF2Db54",
-            "decimals": 18,
-            "name": "BirdyFinance",
-            "symbol": "BIRD",
-            "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x4480B4DdFb15fE6518817ef024D8B493afF2Db54/logo.png"
-        },
-        {
-            "chainId": 43114,
             "address": "0xC931f61B1534EB21D8c11B24f3f5Ab2471d4aB50",
             "decimals": 8,
             "name": "Blocknet",
@@ -198,5 +190,5 @@
             "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x1d37986F252d0e349522EA6C3B98Cb935495E63E/logo.png"
         }
     ],
-    "timestamp": "2021-05-23T23:54:00+00:00"
+    "timestamp": "2021-08-22T22:42:00+00:00"
 }
