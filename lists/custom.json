@@ -179,7 +179,7 @@
             "decimals": 18,
             "name": "Husky Avalanche",
             "symbol": "HUSKY",
-            "logoURI": "https://raw.githubusercontent.com/safepoint-be/project-husky/main/img/logo.png"
+            "logoURI": "https://raw.githubusercontent.com/pangolindex/tokens/main/assets/0x65378b697853568dA9ff8EaB60C13E1Ee9f4a654/logo.png"
         },
         {
             "chainId": 43114,
