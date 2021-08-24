@@ -199,49 +199,27 @@
 			  )
 		}
 
-		async function connectMetamask(){
+		async function loadProvider(){
 			if (window.ethereum) {
 		        window.web3 = new Web3(ethereum);
-		        try {
-		          await ethereum.enable();
-		        } catch (err) {
-		          console.log('User denied account access', err)
-		        }
 		    } else if (window.web3) {
 		        window.web3 = new Web3(web3.currentProvider)
 		    } else {
 		       console.log('No Metamask (or other Web3 Provider) installed')
 		    }
+		}
+		 loadProvider()
 
-		    try {  // Request account access
-				await window.ethereum.enable();
-				console.log(ethereum.selectedAddress)
-				const tokenInst = new web3.eth.Contract([{
-  "constant": true,
-  "inputs": [
-    {
-      "name": "_owner",
-      "type": "address"
-    }
-  ],
-  "name": "balanceOf",
-  "outputs": [
-    {
-      "name": "balance",
-      "type": "uint256"
-    }
-  ],
-  "payable": false,
-  "type": "function"
-}], "0x60781c2586d68229fde47564546784ab3faca982");
-				const balance = await tokenInst.methods.balanceOf(ethereum.selectedAddress).call()
-				console.log(balance)
-
-				/*window.web3.eth.getBalance("0x60781c2586d68229fde47564546784ab3faca982")
-				.then(console.log);*/
-			} catch(e) {  // User denied access
-				return false
+		async function connectMetamask(){
+			try {
+				await ethereum.enable();
+			} catch (err) {
+				console.log('User denied account access', err)
 			}
+		}
+
+		function isMetaMaskConnected() {
+			return ethereum.selectedAddress != null
 		}
 
 		async function addTokenToMetaMask(address){
