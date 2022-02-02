@@ -116,13 +116,21 @@ var lists = [
 
     async function loadProvider(){
       if (window.ethereum) {
-            window.web3 = new Web3(ethereum);
-        } else if (window.web3) {
-            window.web3 = new Web3(web3.currentProvider)
-        } else {
-            console.log('No Metamask (or other Web3 Provider) installed')
-        }
-        console.log(await web3.eth.getChainId())       
+        // Metamask injected
+        window.web3 = new Web3(window.ethereum);
+        console.log('Web3 Loaded by window.ethereum')
+      } else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider)
+        console.log('Web3 Loaded by window.web3')
+      } else {
+        console.log('No Metamask (or other Web3 Provider) installed')
+      }
+      var chainId = await web3.eth.getChainId()
+      console.log('Local Provider ChainID :', chainId)
+      if(chainId != 43114){
+        $('#add_avalanche_network').show()
+      }
+      
     }
     loadProvider()
 
@@ -136,6 +144,7 @@ var lists = [
     async function connectMetamask(){
       try {
         await ethereum.enable();
+        console.log('Web3 connected')
       } catch (err) {
         console.log('User denied account access', err)
       }
@@ -184,12 +193,47 @@ var lists = [
     const queryString = window.location.search;
     $( document ).ready(function() {
 
-        window.web3_api = new Web3('wss://api.avax.network/ext/bc/C/ws')
+        window.web3_api = new Web3('https://api.avax.network/ext/bc/C/rpc')
         getAvaxPrice()
         updateGasPrice()
         setInterval(updateGasPrice, 10*1000);
         updateBurnedFee()
         setInterval(updateBurnedFee, 10*1000);
+
+
+      $('#add_avalanche_network').on('click', async function() {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0xA86A' }],
+          });
+          $('#add_avalanche_network').hide()
+        } catch (e) {
+          if (e.code === 4902) {
+            try {
+              await window.ethereum.request({
+                method: 'wallet_addEthereumChain',
+                params: [{
+                  chainId: '0xA86A',
+                  chainName: 'Avalanche Network',
+                  nativeCurrency:
+                      {
+                          name: 'AVAX',
+                          symbol: 'AVAX',
+                          decimals: 18
+                      },
+                  rpcUrls: ['https://api.avax.network/ext/bc/C/rpc'],
+                  blockExplorerUrls: ['https://snowtrace.io/'],
+              }],
+              });
+              $('#add_avalanche_network').hide()
+            } catch (addError) {
+              console.error(addError);
+            }
+          }
+          // console.error(e)
+        }
+      })
       
       $.each(lists, function( index, url ) {
         $.ajax({
