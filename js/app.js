@@ -43,7 +43,7 @@ window.onload = function() {
 
 var lists = [
       'https://raw.githubusercontent.com/all3kcis/avax-tokens/master/lists/custom.json',
-      'https://raw.githubusercontent.com/traderjoe-xyz/joe-tokenlists/blob/main/mc.tokenlist.json',
+      'https://raw.githubusercontent.com/traderjoe-xyz/joe-tokenlists/main/mc.tokenlist.json',
       'https://raw.githubusercontent.com/pangolindex/tokenlists/main/pangolin.tokenlist.json',
       'https://raw.githubusercontent.com/baguette-exchange/contracts/master/tokenlist/baguette.tokenlist.json',
       'https://raw.githubusercontent.com/elkfinance/tokens/main/avax.tokenlist.json'
